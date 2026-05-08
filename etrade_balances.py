@@ -54,10 +54,7 @@ def main():
 
         try:
             bal = get_balance(key, atype)
-            computed = bal.get("Computed", {})
-            print(f"  Cash available       : ${computed.get('cashAvailableForInvestment', 'N/A')}")
-            print(f"  Net account value    : ${computed.get('RealTimeValues', {}).get('totalAccountValue', computed.get('totalAccountValue', 'N/A'))}")
-            print(f"  Total securities     : ${computed.get('totalSecuritiesMktValue', 'N/A')}")
+            print(f"  Raw response: {json.dumps(bal, indent=2)}")
         except Exception as e:
             print(f"  Could not fetch balance: {e}")
 
