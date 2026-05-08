@@ -11,6 +11,7 @@ Flow:
 
 import os
 import webbrowser
+from typing import Tuple
 from requests_oauthlib import OAuth1Session
 
 # ---------------------------------------------------------------------------
@@ -28,7 +29,7 @@ ACCESS_TOKEN_URL  = "https://apisb.etrade.com/oauth/access_token"
 BASE_URL          = "https://apisb.etrade.com"
 
 
-def get_request_token() -> tuple[str, str]:
+def get_request_token() -> Tuple[str, str]:
     """Step 1 – obtain a temporary request token."""
     session = OAuth1Session(
         CONSUMER_KEY,
@@ -44,7 +45,7 @@ def build_authorize_url(request_token: str) -> str:
     return f"{AUTHORIZE_URL}?key={CONSUMER_KEY}&token={request_token}"
 
 
-def get_access_token(request_token: str, request_secret: str, verifier: str) -> tuple[str, str]:
+def get_access_token(request_token: str, request_secret: str, verifier: str) -> Tuple[str, str]:
     """Step 3 – exchange request token + verifier for an access token."""
     session = OAuth1Session(
         CONSUMER_KEY,
